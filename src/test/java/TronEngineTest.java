@@ -20,4 +20,9 @@ public class TronEngineTest {
         assertThat(turn.outputForPlayer(1)).isEqualTo("2 1\n0 0 0 0");
     }
 
+    @Test
+    public void should_launch_tron_players() {
+        
+    }
+
 }
