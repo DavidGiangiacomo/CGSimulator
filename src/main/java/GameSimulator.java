@@ -4,10 +4,12 @@ public class GameSimulator {
         String nextTurnInput();
         boolean hasNextTurn();
         boolean isWinning(GamePlayer player);
+        String getInitializationInput();
     }
 
     public interface GamePlayer {
         void setInput(String input);
+        void initialize(String initInput);
         String getOutput();
     }
 
@@ -24,6 +26,7 @@ public class GameSimulator {
     }
 
     public void run() {
+        player.initialize(engine.getInitializationInput());
         while(engine.hasNextTurn()) {
             player.setInput(engine.nextTurnInput());
             output.append(player.getOutput()).append("\n");

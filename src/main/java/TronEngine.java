@@ -26,4 +26,9 @@ public class TronEngine implements GameSimulator.GameEngine {
     public boolean isWinning(GameSimulator.GamePlayer player) {
         return false;
     }
+
+    @Override
+    public String getInitializationInput() {
+        return null;
+    }
 }
