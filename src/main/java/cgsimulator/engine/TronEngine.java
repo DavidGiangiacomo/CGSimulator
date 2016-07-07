@@ -28,7 +28,12 @@ public class TronEngine implements GameSimulator.GameEngine {
     }
 
     @Override
-    public boolean isWon(GameSimulator.GamePlayer player) {
+    public void setPlayerOutput(String input) {
+
+    }
+
+    @Override
+    public boolean isWon() {
         return false;
     }
 

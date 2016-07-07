@@ -41,7 +41,7 @@ public class GameSimulatorTest {
     }
 
     private void givenPlayerOutputIsValid() {
-        when(engine.isWon(player)).thenReturn(true);
+        when(engine.isWon()).thenReturn(true);
         when(engine.hasNextTurn()).thenReturn(true, false);
         when(player.getOutput()).thenReturn("valid");
     }
@@ -66,7 +66,7 @@ public class GameSimulatorTest {
     }
 
     private void givenPlayerOutputIsInvalid() {
-        when(engine.isWon(player)).thenReturn(false);
+        when(engine.isWon()).thenReturn(false);
         when(engine.hasNextTurn()).thenReturn(true, false);
         when(player.getOutput()).thenReturn("false");
     }
@@ -87,7 +87,7 @@ public class GameSimulatorTest {
     }
 
     private void givenAPlayerWhoNeedsTwoTurns() {
-        when(engine.isWon(player)).thenReturn(true);
+        when(engine.isWon()).thenReturn(true);
         when(engine.hasNextTurn()).thenReturn(true, true, false);
         when(player.getOutput()).thenReturn("turn", "valid");
     }

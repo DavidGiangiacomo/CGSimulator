@@ -1,5 +1,7 @@
 package cgsimulator;
 
+import cgsimulator.exception.InvalidInputException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,8 @@ public class GameSimulator {
     public interface GameEngine {
         String nextTurnInput();
         boolean hasNextTurn();
-        boolean isWon(GamePlayer player);//TODO we must not need GamePlayer dependency in GameEngine
+        void setPlayerOutput(String input) throws InvalidInputException;
+        boolean isWon();
         String getInitializationInput();
     }
 
@@ -43,7 +46,7 @@ public class GameSimulator {
     }
 
     public boolean isWinning() {
-        return engine.isWon(player);
+        return engine.isWon();
     }
 
     public List<String> outputs() {
