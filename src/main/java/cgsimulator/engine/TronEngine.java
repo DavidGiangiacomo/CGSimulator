@@ -1,3 +1,8 @@
+package cgsimulator.engine;
+
+import cgsimulator.GameSimulator;
+import cgsimulator.Turn;
+
 public class TronEngine implements GameSimulator.GameEngine {
 
     public static final int WIDTH = 30;

@@ -1,3 +1,5 @@
+package cgsimulator;
+
 public class Turn {
 
     public String outputForPlayer(int playerId) {

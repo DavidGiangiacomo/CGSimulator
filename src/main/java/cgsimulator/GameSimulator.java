@@ -1,3 +1,8 @@
+package cgsimulator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameSimulator {
 
     public interface GameEngine {
@@ -15,7 +20,11 @@ public class GameSimulator {
 
     private GameEngine engine;
     private GamePlayer player;
-    private StringBuilder output = new StringBuilder();
+    private List<String> output;
+
+    public GameSimulator() {
+        output = new ArrayList<>();
+    }
 
     public void setPlayer(GamePlayer player) {
         this.player = player;
@@ -29,7 +38,7 @@ public class GameSimulator {
         player.initialize(engine.getInitializationInput());
         while(engine.hasNextTurn()) {
             player.setInput(engine.nextTurnInput());
-            output.append(player.getOutput()).append("\n");
+            output.add(player.getOutput());
         }
     }
 
@@ -37,8 +46,8 @@ public class GameSimulator {
         return engine.isWinning(player);
     }
 
-    public String output() {
-        return output.toString();
+    public List<String> outputs() {
+        return output;
     }
 
 }
