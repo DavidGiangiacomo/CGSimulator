@@ -8,7 +8,7 @@ public class GameSimulator {
     public interface GameEngine {
         String nextTurnInput();
         boolean hasNextTurn();
-        boolean isWinning(GamePlayer player);
+        boolean isWon(GamePlayer player);//TODO we must not need GamePlayer dependency in GameEngine
         String getInitializationInput();
     }
 
@@ -43,7 +43,7 @@ public class GameSimulator {
     }
 
     public boolean isWinning() {
-        return engine.isWinning(player);
+        return engine.isWon(player);
     }
 
     public List<String> outputs() {
