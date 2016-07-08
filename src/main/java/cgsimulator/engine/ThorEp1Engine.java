@@ -3,9 +3,6 @@ package cgsimulator.engine;
 import cgsimulator.GameSimulator;
 import cgsimulator.exception.InvalidInputException;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class ThorEp1Engine implements GameSimulator.GameEngine {
 
 
@@ -61,6 +58,14 @@ public class ThorEp1Engine implements GameSimulator.GameEngine {
         updateGameDatas(input);
     }
 
+    private void validateInput(String input) throws InvalidInputException {
+        try {
+            validCommands.valueOf(input);
+        }catch (IllegalArgumentException e) {
+            throw new InvalidInputException(input, e);
+        }
+    }
+
     private void updateGameDatas(String input) {
         if ('N' == input.charAt(0)) {
             thorPosition.y--;
@@ -73,14 +78,6 @@ public class ThorEp1Engine implements GameSimulator.GameEngine {
             thorPosition.x--;
         }
         remainingTurns--;
-    }
-
-    private void validateInput(String input) throws InvalidInputException {
-        try {
-            validCommands.valueOf(input);
-        }catch (IllegalArgumentException e) {
-            throw new InvalidInputException(input, e);
-        }
     }
 
     @Override

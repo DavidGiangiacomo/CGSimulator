@@ -4,8 +4,6 @@ import cgsimulator.exception.InvalidInputException;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.IllegalFormatException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ThorEp1EngineTest {
@@ -48,7 +46,7 @@ public class ThorEp1EngineTest {
     }
 
     @Test
-    public void shouldHaveWin() {
+    public void should_have_win() {
         givenThorAndLightPositionsAre(0, 0, 0, 0);
 
         thenGameIsWon();
