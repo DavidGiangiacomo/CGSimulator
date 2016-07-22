@@ -32,7 +32,7 @@ public class GameSimulatorTest {
     }
 
     @Test
-    public void should_valid_a_one_player_game() {
+    public void should_valid_a_one_player_game() throws Exception {
         givenPlayerOutputIsValid();
 
         whenSimulatorRuns();
@@ -40,13 +40,13 @@ public class GameSimulatorTest {
         thenPlayerWins();
     }
 
-    private void givenPlayerOutputIsValid() {
+    private void givenPlayerOutputIsValid() throws Exception {
         when(engine.isWon()).thenReturn(true);
         when(engine.hasNextTurn()).thenReturn(true, false);
         when(player.getOutput()).thenReturn("valid");
     }
 
-    private void whenSimulatorRuns() {
+    private void whenSimulatorRuns() throws Exception {
         gameSimulator.run();
     }
 
@@ -57,7 +57,7 @@ public class GameSimulatorTest {
     }
 
     @Test
-    public void should_not_valid_a_one_player_game() {
+    public void should_not_valid_a_one_player_game() throws Exception {
         givenPlayerOutputIsInvalid();
 
         whenSimulatorRuns();
@@ -65,7 +65,7 @@ public class GameSimulatorTest {
         thenPlayerLoses();
     }
 
-    private void givenPlayerOutputIsInvalid() {
+    private void givenPlayerOutputIsInvalid() throws Exception {
         when(engine.isWon()).thenReturn(false);
         when(engine.hasNextTurn()).thenReturn(true, false);
         when(player.getOutput()).thenReturn("false");
@@ -78,7 +78,7 @@ public class GameSimulatorTest {
     }
 
     @Test
-    public void player_should_win_after_two_turns() {
+    public void player_should_win_after_two_turns() throws Exception {
         givenAPlayerWhoNeedsTwoTurns();
 
         whenSimulatorRuns();
@@ -86,7 +86,7 @@ public class GameSimulatorTest {
         thenPlayerWinsAfterTwoTurns();
     }
 
-    private void givenAPlayerWhoNeedsTwoTurns() {
+    private void givenAPlayerWhoNeedsTwoTurns() throws Exception {
         when(engine.isWon()).thenReturn(true);
         when(engine.hasNextTurn()).thenReturn(true, true, false);
         when(player.getOutput()).thenReturn("turn", "valid");
@@ -100,7 +100,7 @@ public class GameSimulatorTest {
     }
 
     @Test
-    public void player_should_win_a_game_with_initialization() {
+    public void player_should_win_a_game_with_initialization() throws Exception {
         givenPlayerOutputIsValid();
         AndEngineProvideInitialization();
 
@@ -114,7 +114,7 @@ public class GameSimulatorTest {
         when(engine.getInitializationInput()).thenReturn("init");
     }
 
-    private void AndInitializationWasCalled() {
+    private void AndInitializationWasCalled() throws Exception {
         verify(player).initialize(anyString());
     }
 

@@ -2,6 +2,7 @@ package cgsimulator;
 
 import cgsimulator.exception.InvalidInputException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class GameSimulator {
     }
 
     public interface GamePlayer {
-        void setInput(String input);
-        void initialize(String initInput);
-        String getOutput();
+        void initialize(String initInput) throws IOException;
+        void setInput(String input) throws IOException;
+        String getOutput() throws IOException;
     }
 
     private GameEngine engine;
@@ -37,7 +38,7 @@ public class GameSimulator {
         engine = gameEngine;
     }
 
-    public void run() {
+    public void run() throws IOException{
         player.initialize(engine.getInitializationInput());
         while(engine.hasNextTurn()) {
             player.setInput(engine.nextTurnInput());
