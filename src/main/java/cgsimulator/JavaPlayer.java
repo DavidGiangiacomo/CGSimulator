@@ -4,7 +4,6 @@ import java.io.*;
 
 public class JavaPlayer implements GameSimulator.GamePlayer {
 
-    private static final String SOLUTIONS_PATH = "";//TODO set PlayerSolution directory
 
     private final Process playerProcess;
     private final BufferedReader reader;
@@ -12,7 +11,6 @@ public class JavaPlayer implements GameSimulator.GamePlayer {
 
     public JavaPlayer(String playerFileName) throws IOException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", playerFileName);
-        processBuilder.directory(new File(SOLUTIONS_PATH));
         playerProcess = processBuilder.start();
 
         InputStream stdout = playerProcess.getInputStream();
